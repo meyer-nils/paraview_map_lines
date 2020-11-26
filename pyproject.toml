@@ -1,0 +1,21 @@
+#
+# Isort is a tool that automatically sorts import statements according to
+# Python PEP standards (https://github.com/timothycrosley/isort)
+#
+#	install with: pip install isort
+#
+[tool.isort]
+line_length = 79
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+
+#
+# Black is a tool that ensures proper code formatting according to Python PEP
+# standards. (https://github.com/psf/black)
+#
+# install with: pip install black
+#
+[tool.black]
+line-length = 79
