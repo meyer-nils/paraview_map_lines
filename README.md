@@ -11,6 +11,22 @@ Load the plugin to Paraview via 'Tools' -> 'Manage Plugins...' -> 'Load New'.
 # Use
 Load a .vtk file with line elements and a .vtk file with cells to paraview. Execute 'Filters' -> 'Map Lines' and select source lines and target cells. Click 'Apply' to start the plugin and 'Reload Python Module' to update the filter to changes in the code.
 
+If line positions are given in the form
+```
+N
+1 x1 y1 z1
+1 x2 y2 z3
+...
+1 xN yN zN
+M
+1 x1 y1 z1
+1 x2 y2 z3
+...
+1 xM yM zM
+...
+```
+you may use the 'convert_mechanistic2vtk.py' tool to create a VTK that can be used for the Paraview filter.
+
 # References
 [1] Meyer et al., Direct Bundle Simulation approach for the compression molding process of Sheet Molding Compound, Composites Part A: Applied Science and Manufacturing, Volume 132,
 2020,(https://doi.org/10.1016/j.compositesa.2020.105809).
