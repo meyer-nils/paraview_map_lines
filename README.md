@@ -4,10 +4,8 @@
 # Paraview Map Lines
 This repository offers a filter to evaluate results from direct simulation techniques [1, 2, 3] on a volume mesh. The result is a volume mesh that contains the cell data attributes 'Orientation tensor' and 'Volume fraction'.
 
-# Requirements
-- Paraview 5.8 or higher
+The plugin requires Paraview 5.8 or higher.
 
-# Install plugin
 Load the plugin to Paraview via 'Tools' -> 'Manage Plugins...' -> 'Load New'.
 
 # Use
@@ -16,5 +14,7 @@ Load a .vtk file with line elements and a .vtk file with cells to paraview. Exec
 # References
 [1] Meyer et al., Direct Bundle Simulation approach for the compression molding process of Sheet Molding Compound, Composites Part A: Applied Science and Manufacturing, Volume 132,
 2020,(https://doi.org/10.1016/j.compositesa.2020.105809).
+
 [2] Londoño-Hurtado. Mechanistic Model for Fiber Flow; University of Wisconsin-Madison: Madison, WI, USA, 2009.
+
 [3] Kuhn C et al., 'A simulative overview on fiber predictions models for discontinuous long fiber composites.', Polymer Composites. 2020;41:73–81. (https://doi.org/10.1002/pc.25346)
