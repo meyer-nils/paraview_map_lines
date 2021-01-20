@@ -12,7 +12,6 @@ if __name__ == "__main__":
     print("Converting %s" % in_filename)
 
     with open(in_filename) as infile:
-        infile.readline()
         nodes = []
         lines = []
         nodeid = 0
