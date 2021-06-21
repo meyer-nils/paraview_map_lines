@@ -137,7 +137,9 @@ class MapBundleFilter(VTKPythonAlgorithmBase):
             # Compute fiber orientation tensors
             dirs = norm_directions[reduced_line_ids]
             if N > self._minN:
-                A[i, :, :] = np.einsum("ki,kj->ij", dirs, dirs) / N
+                A[i, :, :] = np.einsum(
+                    "k, ki,kj->ij", length_in_cell, dirs, dirs
+                ) / np.sum(length_in_cell)
 
         output.CellData.append(volumes, "Cell Volume")
         output.CellData.append(n_lines, "N Lines")
