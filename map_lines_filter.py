@@ -11,13 +11,9 @@ from vtkmodules.vtkCommonDataModel import vtkUnstructuredGrid
 
 @smproxy.filter(label="Map Lines")
 @smproperty.input(name="Source Lines", port_index=0)
-@smdomain.datatype(
-    dataTypes=["vtkUnstructuredGrid"], composite_data_supported=False
-)
+@smdomain.datatype(dataTypes=["vtkUnstructuredGrid"], composite_data_supported=False)
 @smproperty.input(name="Target Cells", port_index=1)
-@smdomain.datatype(
-    dataTypes=["vtkUnstructuredGrid"], composite_data_supported=False
-)
+@smdomain.datatype(dataTypes=["vtkUnstructuredGrid"], composite_data_supported=False)
 class MapBundleFilter(VTKPythonAlgorithmBase):
     """MapBundleFilter.
 
@@ -47,9 +43,7 @@ class MapBundleFilter(VTKPythonAlgorithmBase):
         info.Set(self.INPUT_REQUIRED_DATA_TYPE(), "vtkUnstructuredGrid")
         return 1
 
-    @smproperty.doublevector(
-        name="Cross section area", default_values=[1.76872e-07]
-    )
+    @smproperty.doublevector(name="Cross section area", default_values=[1.76872e-07])
     @smdomain.doublerange()
     def SetArea(self, area):
         """Create an input field for the cross sectional area and save it."""
