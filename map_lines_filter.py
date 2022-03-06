@@ -178,7 +178,14 @@ class MapBundleFilter(VTKPythonAlgorithmBase):
 
         # Both points outside
         if in1 == 0 and in2 == 0:
-            return 0.0
+            x1 = [0.0, 0.0, 0.0]
+            x2 = [0.0, 0.0, 0.0]
+            res1 = cell.IntersectWithLine(p1, p2, 0.0, t, x1, pcords, subid)
+            res2 = cell.IntersectWithLine(p2, p1, 0.0, t, x2, pcords, subid)
+            if res1 > 0 and res2 > 0:
+                return np.linalg.norm(np.array(x1) - np.array(x2))
+            else:
+                return 0.0
 
         # Only point 2 inside
         if in1 == 0 and in2 == 1:
