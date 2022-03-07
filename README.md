@@ -9,7 +9,7 @@ Essentially, the filter takes a mesh consisting of one-dimensional line elements
 ![result](doc/result.png)
 
 ### Requirements and installation
-The plugin requires Paraview 5.8 or higher. Load the plugin to Paraview via `Tools` -> `Manage Plugins...` -> `Load New`.
+The plugin requires Paraview 5.8 or higher. Load the plugin to Paraview via `Tools` -> `Manage Plugins...` -> `Load New` and select the file `map_lines_filter.py`.
 
 ### Usage
 Load a VTK file with line elements and a VTK file with cells to paraview. Execute `Filters` -> `Map Lines` to select source lines and target cells. 
