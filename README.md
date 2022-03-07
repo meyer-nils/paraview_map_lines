@@ -4,14 +4,14 @@
 # Paraview Map Lines
 This repository offers a filter to evaluate results from direct simulation techniques [1, 2, 3, 4] on a volume mesh. The result is a solid volume mesh that contains the cell data attributes 'Orientation Tensor (2nd Order)' and 'Volume Fraction'.
 
-Essentially, the filter takes a mesh consisting of one-dimensional line elements (source) and a second mesh consisting of solid elements (target) as input. It evaluates the length and direction of the lines in each solid cell considering also partial overlaps. The data is then used to compute effective properties in the cell based on the line based microstructure.
+Essentially, the filter takes a mesh consisting of one-dimensional line elements (source) and a second mesh consisting of solid elements (target) as input. It evaluates the length and direction of the lines in each solid cell considering also partial overlaps. The data is then used to compute effective properties in the cell from the line-based microstructure.
 
 ![result](doc/result.png)
 
-# Requirements and installation
+### Requirements and installation
 The plugin requires Paraview 5.8 or higher. Load the plugin to Paraview via `Tools` -> `Manage Plugins...` -> `Load New`.
 
-# Usage
+### Usage
 Load a VTK file with line elements and a VTK file with cells to paraview. Execute `Filters` -> `Map Lines` to select source lines and target cells. 
 
 ![selection](doc/selection.png)
@@ -24,11 +24,11 @@ Click `Okay` and set a cross section attributed to the line segments as well as 
 
 Click `Apply` to start the plugin.
 
-# Converters
+### Converters
 
 The filter requires the lines to be in a VTK format. If the lines are output in an other format, a short converter script may be used to convert them to VTK format.  
 
-## Mechanistic
+#### Mechanistic
 If line positions are given in a text file of the form
 ```
 N
@@ -49,14 +49,14 @@ you may use
         
 to create a VTK that can be used for the Paraview filter.
 
-## 3D TIMON 
+#### 3D TIMON 
 If line positions are results of a 3D TIMON simulation, you may use 
 
         convert_3dtimon2vtk.py <filename>.unv 
 
 to create a VTK that can be used for the Paraview filter.
 
-# References
+### References
 [1] Meyer et al., Direct Bundle Simulation approach for the compression molding process of Sheet Molding Compound, Composites Part A: Applied Science and Manufacturing, Volume 132,
 2020,(https://doi.org/10.1016/j.compositesa.2020.105809).
 
