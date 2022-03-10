@@ -99,7 +99,8 @@ class MapBundleFilter(VTKPythonAlgorithmBase):
         # Fill new cell data
         n_lines = np.zeros_like(volumes)
         vf = np.zeros_like(volumes)
-        A = np.nan * np.ones((len(volumes), 3, 3))
+        A2 = np.nan * np.ones((len(volumes), 3, 3))
+        A4 = np.nan * np.ones((len(volumes), 3, 3, 3, 3))
         for i, cell_volume in enumerate(volumes):
             # Find a bounding box
             idList = vtk.vtkIdList()
@@ -131,13 +132,24 @@ class MapBundleFilter(VTKPythonAlgorithmBase):
             # Compute fiber orientation tensors
             dirs = norm_directions[reduced_line_ids]
             if N > self._minN:
-                A[i, :, :] = np.einsum(
-                    "k, ki,kj->ij", length_in_cell, dirs, dirs
+                A2[i, :, :] = np.einsum(
+                    "k,ki,kj->ij", length_in_cell, dirs, dirs
                 ) / np.sum(length_in_cell)
+                A4[i, :, :, :, :] = np.einsum(
+                    "m,mi,mj,mk,ml->ijkl",
+                    length_in_cell,
+                    dirs,
+                    dirs,
+                    dirs,
+                    dirs,
+                ) / np.sum(length_in_cell)
+
+        A4 = A4.reshape((len(volumes), -1))
 
         output.CellData.append(volumes, "Cell Volume")
         output.CellData.append(n_lines, "N Lines")
-        output.CellData.append(A, "Orientation Tensor (2nd Order)")
+        output.CellData.append(A2, "Orientation Tensor (2nd Order)")
+        output.CellData.append(A4, "Orientation Tensor (4th Order)")
         output.CellData.append(vf, "Volume Fraction")
 
         return 1
