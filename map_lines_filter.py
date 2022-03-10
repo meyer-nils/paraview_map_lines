@@ -152,6 +152,21 @@ class MapBundleFilter(VTKPythonAlgorithmBase):
         output.CellData.append(A4, "Orientation Tensor (4th Order)")
         output.CellData.append(vf, "Volume Fraction")
 
+        # Label components
+        A2_labels = np.chararray((3, 3), itemsize=2)
+        A4_labels = np.chararray((3, 3, 3, 3), itemsize=4)
+        for i, ilbl in enumerate(["X", "Y", "Z"]):
+            for j, jlbl in enumerate(["X", "Y", "Z"]):
+                A2_labels[i, j] = ilbl + jlbl
+                for k, klbl in enumerate(["X", "Y", "Z"]):
+                    for l, llbl in enumerate(["X", "Y", "Z"]):
+                        A4_labels[i, j, k, l] = ilbl + jlbl + klbl + llbl
+
+        for i, lbl in enumerate(A2_labels.flatten()):
+            output.CellData["Orientation Tensor (2nd Order)"].SetComponentName(i, lbl)
+        for i, lbl in enumerate(A4_labels.flatten()):
+            output.CellData["Orientation Tensor (4th Order)"].SetComponentName(i, lbl)
+
         return 1
 
     def compute_length_in_cell(self, cell, p1, p2):
