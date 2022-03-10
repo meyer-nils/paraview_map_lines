@@ -2,7 +2,7 @@
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # Paraview Map Lines
-This repository offers a filter to evaluate results from direct simulation techniques [1, 2, 3, 4] on a volume mesh. The result is a solid volume mesh that contains the cell data attributes 'Orientation Tensor (2nd Order)' and 'Volume Fraction'.
+This repository offers a filter to evaluate results from direct simulation techniques [1, 2, 3, 4] on a volume mesh. The result is a solid volume mesh that contains the cell data attributes 'Orientation Tensor (2nd Order)', 'Orientation Tensor (4th Order)' and 'Volume Fraction'.
 
 Essentially, the filter takes a mesh consisting of one-dimensional line elements (source) and a second mesh consisting of solid elements (target) as input. It evaluates the length and direction of the lines in each solid cell considering also partial overlaps. The data is then used to compute effective properties in the cell from the line-based microstructure.
 
